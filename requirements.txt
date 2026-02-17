@@ -1,0 +1,93 @@
+Technical Assignment - Web Frontend
+Overview
+Build a production-ready image uploader in React using Uppy's headless/core API with a
+completely custom UI. The solution should demonstrate your ability to work with third-party
+libraries at a low level while creating a polished, responsive user experience.
+Key Constraint: You must use Uppy in headless mode (core only) - no pre-built UI components
+like Dashboard, DragDrop, or ProgressBar. Build all the UI from scratch.
+Core Requirements
+1. Uppy Headless Integration with Cloudinary
+● Use @uppy/core for file handling and state management
+● Use @uppy/xhr-upload configured for Cloudinary's upload endpoint
+● Use @uppy/thumbnail-generator for client-side image previews
+● Subscribe to Uppy events for progress tracking and thumbnail generation
+● Do NOT use: @uppy/dashboard, @uppy/drag-drop, @uppy/progress-bar, or
+any other UI plugins
+2. Custom React Dashboard
+Build a complete custom UI that includes:
+● Drop Zone: Custom drag-and-drop area with visual feedback for drag states
+● File Selector: Click-to-browse with proper file input handling
+● Mobile Support: "Upload from Gallery" button on mobile devices
+● File Queue: Display pending, uploading, completed, and failed files
+● Action Buttons: Upload all, Cancel, Retry failed, Clear completed
+3. Progress Tracking
+Implement comprehensive progress visualization:
+Per-File Progress:
+● Progress indicator for each file
+Overall Progress:
+● Aggregate progress bar for all files
+● Files completed / total files count
+● Total bytes uploaded / total bytes
+● Estimated time to complete (bonus)
+4. Masonry Layout for Previews (Pinterest style)
+Display image previews in a responsive masonry grid using thumbnails from
+@uppy/thumbnail-generator:
+● Images should flow naturally based on their aspect ratios (thumbnails preserve aspect
+ratio)
+● Responsive columns: 1 column (mobile), 3 columns (desktop)
+● Smooth layout transitions when images load or are removed
+● Each image card should show:
+○ Thumbnail preview
+○ File name
+○ Upload status indicator (pending/uploading/complete/error)
+Implementation options: CSS columns, CSS Grid, or any available library
+5. File Validation
+● File Types: Only accept images (jpg, jpeg, png, gif, webp)
+● File Size: Maximum 10MB per file
+● Show clear, user-friendly error messages for validation failures
+6. UI States
+● Empty: Clear call-to-action, visually appealing drop zone
+● Hover: Visual feedback when hovering over drop zone
+● Drag Active: Distinct state when dragging files over the zone
+● Uploading: Progress indicators
+● Success: Clear confirmation with Cloudinary URL
+● Error: Error messages with retry option
+Technical Requirements
+Must Use
+● React 18+ with functional components and hooks
+● @uppy/core (headless only)
+● @uppy/xhr-upload for uploads to Cloudinary
+● @uppy/thumbnail-generator for client-side image previews
+● CSS Modules, Tailwind CSS, or styled-components
+Cloudinary Setup
+This assignment uses Cloudinary for direct browser-to-cloud uploads without requiring a
+backend, you can create a free account at https://cloudinary.com
+Performance Considerations
+● Memory Management: Clean up when files are removed, and properly dispose Uppy
+instance on unmount
+● Thumbnail Generation: Handle the async nature show loading state until preview is
+ready
+● Error Boundaries: Implement error boundaries to prevent crashes
+● Concurrent Uploads: Configure appropriate upload concurrency
+● Lazy Loading of thumbnails
+Deliverables
+1. Source Code (GitHub repository)
+● Well-organized component structure
+● Clear separation of concerns
+2. Documentation
+● README with setup instructions
+● Architecture decisions explained
+3. Demo
+● Screen recording showing all features
+● Live demo link (Vercel, Netlify, etc.) preferred
+
+Bonus Points (Optional)
+● Unit Tests: Tests for custom hooks and utilities
+● E2E Tests: Playwright or Cypress tests for upload flow
+● Animations: Smooth transitions, skeleton loaders, micro-interactions
+● Camera Capture: Option to capture from camera on mobile
+Submission
+● Share a GitHub repository link with your code
+● Include clear instructions for running locally
+● Provide Cloudinary setup instructions
+● Include a live demo link if possible
